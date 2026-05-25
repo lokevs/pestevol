@@ -11,6 +11,11 @@ ZENODO_RECORD <- "502301"
 
 base_url <- sprintf("https://%s/record/%s/files", ZENODO_HOST, ZENODO_RECORD)
 
+## Raise R's download.file() timeout from its 60 s default to 2 h, so that
+## multi-GB files (notably simulated_time_series.txt) don't abort mid-stream
+## on residential connections.
+options(timeout = max(7200, getOption("timeout")))
+
 ## Resolve repo root from whichever directory the user happens to be in
 repo_root <- if (basename(normalizePath(getwd(), winslash = "/")) == "scripts") {
   normalizePath("..", winslash = "/")
