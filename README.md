@@ -16,9 +16,14 @@ Raw data, fitted Bayesian models, and the Genesys accession cache are archived o
 
 ## Running
 
-Scripts are run from the `scripts/` directory and reference paths as `../data/`, `../output/`, etc. `packages_functions_data.R` is sourced by every script and loads shared packages, functions, and data.
+Scripts are run from the `scripts/` directory and reference paths as `../data/`, `../output/`, etc. `packages_functions_data.R` is sourced by every script and loads shared functions and data.
 
-**First-time setup** — from the `scripts/` directory, run `source("fetch_data.R")` to download the raw data, fitted models, parameter estimates, simulation outputs, and Genesys cache from Zenodo into `../data/`, `../models/`, and `../output/` (≈3.5 GB total). To speed up re-runs, the script skips any file that is already present. With everything in place, the figure and table scripts run without needing to refit any Bayesian model or rerun any simulation.
+**First-time setup** — from the `scripts/` directory:
+
+1. `source("install_dependencies.R")` — installs every CRAN package any script will need (re-runs are cheap; already-installed packages are skipped).
+2. `source("fetch_data.R")` — downloads the raw data, fitted models, parameter estimates, simulation outputs, and Genesys cache from Zenodo into `../data/`, `../models/`, and `../output/` (≈3.5 GB total). `fetch_data.R` also works from the repo root; already-present files are skipped on re-runs.
+
+With everything in place, the figure and table scripts run without needing to refit any Bayesian model or rerun any simulation.
 
 With the bundled fitted models, the typical end-to-end workflow is:
 
@@ -39,7 +44,7 @@ R (≥ 4.3) plus the following packages:
 - **Table rendering**: `kableExtra`, `webshot2`, `png`, `base64enc`
 - **Genesys accession API**: `genesysr`
 
-`packages_functions_data.R` checks for the core set (`dplyr`, `tidyr`, `lubridate`, `forecast`, `ggplot2`, `maps`, `mapdata`, `brms`, `bayestestR`) on first run and offers to install any that are missing. The remaining packages are loaded by the individual scripts that need them. `brms` requires a working C++ toolchain (via `rstan` / `cmdstanr`), and `webshot2` requires Chrome/Chromium for the HTML-to-image step used by `table.R`.
+`scripts/install_dependencies.R` installs all of the above in one step. Individual scripts then `library()` only the packages they actually use. `brms` requires a working C++ toolchain (via `rstan` / `cmdstanr`), and `webshot2` requires Chrome/Chromium for the HTML-to-image step used by `table.R`.
 
 ## License
 

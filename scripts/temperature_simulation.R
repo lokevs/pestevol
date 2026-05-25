@@ -1,5 +1,7 @@
 #### Load packages, functions, and data ----
 source("packages_functions_data.R")
+library(maps)
+library(mapdata)  # provides the "worldHires" database used by the validation map below
 
 #### Read and prepare data ----
 

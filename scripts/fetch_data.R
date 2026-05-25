@@ -1,6 +1,7 @@
 #### Fetch data, models, and cached intermediates from Zenodo ----
 ## Run this once after cloning the repo, before any other script.
 ## Already-downloaded files are skipped on subsequent runs.
+## Works whether sourced from the repo root or from the scripts/ folder.
 
 ## TODO: fill in once the Zenodo record is published.
 ## ZENODO_HOST stays "sandbox.zenodo.org" while testing this script against a
@@ -9,6 +10,16 @@ ZENODO_HOST   <- "sandbox.zenodo.org"
 ZENODO_RECORD <- "502301"
 
 base_url <- sprintf("https://%s/record/%s/files", ZENODO_HOST, ZENODO_RECORD)
+
+## Resolve repo root from whichever directory the user happens to be in
+repo_root <- if (basename(normalizePath(getwd(), winslash = "/")) == "scripts") {
+  normalizePath("..", winslash = "/")
+} else if (file.exists("scripts/fetch_data.R")) {
+  normalizePath(".", winslash = "/")
+} else {
+  stop("Cannot locate the repo root. Run this script with the repo root or ",
+       "the scripts/ folder as your working directory.")
+}
 
 ## Files are uploaded flat to Zenodo; this manifest places each one in the
 ## correct local folder.
@@ -61,7 +72,7 @@ files <- list(
 
 ## Ensure all target folders exist (figures/raw/ is needed by figure scripts too)
 for (d in c("data", "models", "output", "figures/raw")) {
-  dir.create(file.path("..", d), showWarnings = FALSE, recursive = TRUE)
+  dir.create(file.path(repo_root, d), showWarnings = FALSE, recursive = TRUE)
 }
 
 ## Download every file, skipping any that already exist locally
@@ -70,7 +81,7 @@ i <- 0
 for (folder in names(files)) {
   for (f in files[[folder]]) {
     i <- i + 1
-    dest <- file.path("..", folder, f)
+    dest <- file.path(repo_root, folder, f)
     if (file.exists(dest)) {
       message(sprintf("[%d/%d] %s/%s already present, skipping.", i, n_total, folder, f))
       next

@@ -1,21 +1,12 @@
 #### Load packages ----
-required_packages <- c("dplyr", "lubridate", "forecast", "splines", "ggplot2",
-                       "maps", "mapdata", "grDevices", "brms", "bayestestR",
-                       "tidyr")
-
-for (pkg in required_packages) {
-  if (!require(pkg, character.only = TRUE)) {
-    cat(sprintf("Package '%s' is not installed. Do you want to install it? (yes/no): ", pkg))
-    answer <- readline()
-    if (tolower(answer) == "yes") {
-      install.packages(pkg)
-      library(pkg, character.only = TRUE)
-      cat(sprintf("Package '%s' has been installed and loaded.\n", pkg))
-    } else {
-      cat(sprintf("Package '%s' is required for the code to run. Please install it manually.\n", pkg))
-    }
-  }
-}
+## Installation is handled separately by install_dependencies.R; this script
+## only attaches the packages it (and downstream scripts that source it) need.
+library(dplyr)
+library(tidyr)
+library(lubridate)
+library(forecast)
+library(ggplot2)
+library(brms)
 
 #### Temperature simulation function ----
 simulate_temperature <- function(input_temperature, input_date_time, input_site, years = 1, n = 1, warming_rate = 0, start_day = 1, end_day = 365) {
