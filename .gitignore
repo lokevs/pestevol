@@ -1,0 +1,28 @@
+# R / RStudio
+.Rhistory
+.RData
+.Rapp.history
+.Ruserdata
+.Rproj.user/
+*.Rproj
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+
+# Data, models, simulation outputs, and figures are fetched from Zenodo
+# by scripts/fetch_data.R after cloning. They are not tracked in git.
+data/*
+models/*
+output/*
+figures/raw/*
+
+# Keep the folder skeleton so fetch_data.R has somewhere to put the files
+!data/.gitkeep
+!models/.gitkeep
+!output/.gitkeep
+!figures/raw/.gitkeep
