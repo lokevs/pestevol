@@ -29,6 +29,8 @@ pdf("../figures/raw/fig_2_raw_data.pdf", height = 2, width = 1.5, pointsize = 3)
 
     # Lines connecting group means
     for(re in unique(groupmeans_regime$replicate)){
+      tempdat <- subset(groupmeans_regime, replicate == re)
+
       lines(dev.rate ~ temperature,
             data = tempdat,
             lwd = 1,
@@ -111,7 +113,7 @@ pdf("../figures/raw/fig_2_raw_data.pdf", height = 2, width = 1.5, pointsize = 3)
     plot(NA,
          ylab = "Growth rate", xlab = "Temperature", xaxt = "n", yaxt = "n",
          ylim = c(0, 0.15/1000), xlim = c(14, 40),
-         main = i)
+         main = g)
     abline(h = c(0, 0.05, 0.1, 0.15)/1000, lty = 3, col = "grey")
 
     for(i in c("anc", "cold", "hot")){
@@ -129,6 +131,8 @@ pdf("../figures/raw/fig_2_raw_data.pdf", height = 2, width = 1.5, pointsize = 3)
 
     # Lines connecting group means
     for(re in unique(groupmeans_regime$replicate)){
+      tempdat <- subset(groupmeans_regime, replicate == re)
+
       lines(growth.rate ~ temperature,
             data = tempdat,
             lwd = 1,
