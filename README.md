@@ -1,4 +1,4 @@
-**# Pest evolution amplifies projected crop losses under climate change
+# Pest evolution amplifies projected crop losses under climate change
 
 R code and data retrieval accompanying von Schmalensee et al. 2026 "Pest evolution amplifies projected crop losses under climate change"
 
