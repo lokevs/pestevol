@@ -42,7 +42,7 @@ summary(dev_rate_model)
 #### Posterior predictive check ----
 
 pdf("../figures/raw/fig_S4_ppc_dev_rate.pdf", height = 10, width = 10, pointsize = 3)
-set.seed(9536); pp_check(dev_rate_model, type = "ecdf_overlay_grouped", group = "replicate")
+set.seed(9536); print(pp_check(dev_rate_model, type = "ecdf_overlay_grouped", group = "replicate"))
 dev.off()
 
 #### Extract posteriors ----

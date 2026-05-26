@@ -43,7 +43,7 @@ plot(offspring_model_global)
 summary(offspring_model_global)
 
 #### Posterior predictive check ----
-pdf("../figures/raw/fig_S8_ppc_LRS_global.pdf", height = 10, width = 10, pointsize = 3); set.seed(7434); pp_check(offspring_model_global, type = "ecdf_overlay_grouped", group = "replicate"); dev.off()
+pdf("../figures/raw/fig_S8_ppc_LRS_global.pdf", height = 10, width = 10, pointsize = 3); set.seed(7434); print(pp_check(offspring_model_global, type = "ecdf_overlay_grouped", group = "replicate")); dev.off()
 
 #### Extract posteriors ----
 offspring_model_global_posteriors <- as.data.frame(offspring_model_global)

@@ -61,7 +61,7 @@ plot(growth_rate_model)
 summary(growth_rate_model)
 
 ## Posterior predictive check
-pdf("../figures/raw/fig_S6_ppc_growth_rate.pdf", height = 10, width = 10, pointsize = 3); set.seed(2491); pp_check(growth_rate_model, type = "ecdf_overlay_grouped", group = "replicate"); dev.off()
+pdf("../figures/raw/fig_S6_ppc_growth_rate.pdf", height = 10, width = 10, pointsize = 3); set.seed(2491); print(pp_check(growth_rate_model, type = "ecdf_overlay_grouped", group = "replicate")); dev.off()
 
 #### Plot growth rate TPCs ----
 
