@@ -27,14 +27,6 @@ Scripts are run from the `scripts/` directory and reference paths as `../data/`,
 
 With everything in place, the figure and table scripts run without needing to refit any Bayesian model or rerun any simulation.
 
-With the bundled fitted models, the typical end-to-end workflow is:
-
-1. `temperature_simulation.R` — simulates the 78-year hourly temperature series for the 20 California sites.
-2. `results_20_sites.R` and `results_20_sites_daily averages.R` — main and SI simulations of fitness and crop damage across sites.
-3. Figure and table scripts (`intro_fig.R`, `empirical_results.R`, `global_maps.R`, `economic_impact.R`, `global_sums.R`, `parameter_table.R`, `table.R`, etc.).
-
-To refit the Bayesian models from scratch, run `development.R`, `growth.R`, `LRS.R` and their `*_global.R` counterparts before the simulation steps; this regenerates everything in `models/` and the parameter-estimate text files in `output/`.
-
 ## Dependencies
 
 R (≥ 4.3) plus the following packages:
