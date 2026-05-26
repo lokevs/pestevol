@@ -25,7 +25,7 @@ Scripts are run from the `scripts/` directory and reference paths as `../data/`,
 1. `source("install_dependencies.R")` — installs every CRAN package any script will need (installed packages are skipped).
 2. `source("fetch_data.R")` — downloads the raw data, fitted models, parameter estimates, simulation outputs, and Genesys cache from Zenodo into `../data/`, `../models/`, and `../output/` (≈3.8 GB total). `fetch_data.R` also works from the repo root; already-present files are skipped on re-runs.
 
-With everything in place, the figure and table scripts run without needing to refit any Bayesian model or rerun any simulation. Run (`generate_figures.R`) to generate all the raw figures, or run scripts separately as needed.
+With everything in place, the figure and table scripts run without needing to refit any Bayesian model or rerun any simulation. Run `generate_figures.R` to generate all the raw figures, or run scripts separately as needed.
 
 ## Dependencies
 
