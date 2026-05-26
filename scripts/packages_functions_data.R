@@ -7,6 +7,7 @@ library(lubridate)
 library(forecast)
 library(ggplot2)
 library(brms)
+library(bayestestR)  # point_estimate() for MAP estimates in the model scripts
 
 #### Temperature simulation function ----
 simulate_temperature <- function(input_temperature, input_date_time, input_site, years = 1, n = 1, warming_rate = 0, start_day = 1, end_day = 365) {

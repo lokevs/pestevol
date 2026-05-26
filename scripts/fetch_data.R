@@ -7,7 +7,7 @@
 ## ZENODO_HOST stays "sandbox.zenodo.org" while testing this script against a
 ## sandbox deposit; flip to "zenodo.org" once the real record is live.
 ZENODO_HOST   <- "sandbox.zenodo.org"
-ZENODO_RECORD <- "502301"
+ZENODO_RECORD <- "504425"  # V2 (V1 502301 lacked validation_time_series.txt)
 
 base_url <- sprintf("https://%s/record/%s/files", ZENODO_HOST, ZENODO_RECORD)
 
@@ -70,6 +70,7 @@ files <- list(
     ## Simulation outputs (large; skipping these means re-running
     ## temperature_simulation.R + results_20_sites*.R locally)
     "simulated_time_series.txt",
+    "validation_time_series.txt",
     "simu_dat_long.txt",
     "simu_dat_long_daily_means.txt"
   )

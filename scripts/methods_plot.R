@@ -258,8 +258,8 @@ for(years in c(2)){
 
               # Apply viability to fitness calculations
               simulated_fitness$total.offspring.mass[i] <- sum(daily_offspring * simulated_mass[i:(i + length(daily_offspring) - 1)]) * simulated_fitness$viability[i]
-              simulated_fitness$offspring.growth.rate[i] <- sum(daily_offspring * simulated_mass[i:(i + length(daily_offspring) - 1)] * (1 / (index(daily_offspring) + simulated_dev_time[i:(i + length(daily_offspring) - 1)]))) * simulated_fitness$viability[i]
-              simulated_fitness$fitness.rate[i] <- sum(daily_offspring * (1 / (index(daily_offspring) + simulated_dev_time[i:(i + length(daily_offspring) - 1)]))) * simulated_fitness$viability[i]
+              simulated_fitness$offspring.growth.rate[i] <- sum(daily_offspring * simulated_mass[i:(i + length(daily_offspring) - 1)] * (1 / (seq_along(daily_offspring) + simulated_dev_time[i:(i + length(daily_offspring) - 1)]))) * simulated_fitness$viability[i]
+              simulated_fitness$fitness.rate[i] <- sum(daily_offspring * (1 / (seq_along(daily_offspring) + simulated_dev_time[i:(i + length(daily_offspring) - 1)]))) * simulated_fitness$viability[i]
             }
           }
         }
@@ -377,8 +377,8 @@ for(years in c(77)){
 
               # Apply viability to fitness calculations
               simulated_fitness$total.offspring.mass[i] <- sum(daily_offspring * simulated_mass[i:(i + length(daily_offspring) - 1)]) * simulated_fitness$viability[i]
-              simulated_fitness$offspring.growth.rate[i] <- sum(daily_offspring * simulated_mass[i:(i + length(daily_offspring) - 1)] * (1 / (index(daily_offspring) + simulated_dev_time[i:(i + length(daily_offspring) - 1)]))) * simulated_fitness$viability[i]
-              simulated_fitness$fitness.rate[i] <- sum(daily_offspring * (1 / (index(daily_offspring) + simulated_dev_time[i:(i + length(daily_offspring) - 1)]))) * simulated_fitness$viability[i]
+              simulated_fitness$offspring.growth.rate[i] <- sum(daily_offspring * simulated_mass[i:(i + length(daily_offspring) - 1)] * (1 / (seq_along(daily_offspring) + simulated_dev_time[i:(i + length(daily_offspring) - 1)]))) * simulated_fitness$viability[i]
+              simulated_fitness$fitness.rate[i] <- sum(daily_offspring * (1 / (seq_along(daily_offspring) + simulated_dev_time[i:(i + length(daily_offspring) - 1)]))) * simulated_fitness$viability[i]
             }
           }
         }
