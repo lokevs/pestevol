@@ -3,11 +3,11 @@
 ## Already-downloaded files are skipped on subsequent runs.
 ## Works whether sourced from the repo root or from the scripts/ folder.
 
-## TODO: fill in once the Zenodo record is published.
-## ZENODO_HOST stays "sandbox.zenodo.org" while testing this script against a
-## sandbox deposit; flip to "zenodo.org" once the real record is live.
-ZENODO_HOST   <- "sandbox.zenodo.org"
-ZENODO_RECORD <- "504425"  # V2 (V1 502301 lacked validation_time_series.txt)
+## Zenodo deposit for von Schmalensee et al. 2026. The concept DOI
+## 10.5281/zenodo.20159357 always resolves to the latest version; ZENODO_RECORD
+## is the version record that hosts the files.
+ZENODO_HOST   <- "zenodo.org"
+ZENODO_RECORD <- "20159358"
 
 base_url <- sprintf("https://%s/record/%s/files", ZENODO_HOST, ZENODO_RECORD)
 

@@ -4,7 +4,7 @@ R code and data retrieval accompanying von Schmalensee et al. 2026 "Pest evoluti
 
 ## Data availability
 
-Raw data, fitted Bayesian models, and the Genesys accession cache are archived on Zenodo at **https://sandbox.zenodo.org/records/502301**. The GitHub repository contains only the code; running `scripts/fetch_data.R` once after cloning will download everything into the appropriate local folders.
+Raw data, fitted Bayesian models, and the Genesys accession cache are archived on Zenodo at **https://doi.org/10.5281/zenodo.20159357**. The GitHub repository contains only the code; running `scripts/fetch_data.R` once after cloning will download everything into the appropriate local folders.
 
 ## Folder structure
 
