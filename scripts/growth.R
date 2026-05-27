@@ -57,7 +57,7 @@ growth_rate_model <- brm(bf(growth.rate ~ log(LRF(temperature, Tmin, Tmax, Topt,
                          chains = 4,
                          file = "../models/growth_rate_model")
 
-plot(growth_rate_model)
+# plot(growth_rate_model)
 summary(growth_rate_model)
 
 ## Posterior predictive check

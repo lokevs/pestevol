@@ -61,7 +61,7 @@ growth_rate_model_global <- brm(bf(growth.rate ~ log(LRF(temperature, Tmin, Tmax
                          chains = 4,
                          file = "../models/growth_rate_model_global")
 
-plot(growth_rate_model_global)
+# plot(growth_rate_model_global)
 summary(growth_rate_model_global)
 
 #### Posterior predictive check ----

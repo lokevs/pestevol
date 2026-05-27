@@ -35,7 +35,7 @@ dev_rate_model_global <- brm(bf(dev.rate ~ log(LRF(temperature, Tmin, Tmax, Topt
                       chains = 8,
                       file = "../models/dev_rate_model_global")
 
-plot(dev_rate_model_global)
+# plot(dev_rate_model_global)
 summary(dev_rate_model_global)
 
 #### Posterior predictive check ----

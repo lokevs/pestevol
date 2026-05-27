@@ -319,7 +319,7 @@ offspring_model <- brm(bf(adult.offspring ~ log(fec_function(temperature, Topt, 
                        chains = 6,
                        file = "../models/offspring_model")
 
-plot(offspring_model)
+# plot(offspring_model)
 summary(offspring_model)
 
 ## Posterior predictive check

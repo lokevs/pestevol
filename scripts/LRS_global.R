@@ -39,7 +39,7 @@ offspring_model_global <- brm(bf(adult.offspring ~ log(fec_function(temperature,
                        chains = 6,
                        file = "../models/offspring_model_global")
 
-plot(offspring_model_global)
+# plot(offspring_model_global)
 summary(offspring_model_global)
 
 #### Posterior predictive check ----
