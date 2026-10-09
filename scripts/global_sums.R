@@ -39,8 +39,7 @@ A <- cellSize(dam_anc_pre, unit = "km") # km^2 per pixel for area-weighting
 
 #### Global means ----
 ## Use means instead of sums so values are directly comparable to country-level
-## means (which are zonal means over each country's pixels). % changes are
-## invariant under mean vs sum (constant N cancels), so headline numbers match.
+## means. % changes are invariant under mean vs sum (constant N cancels)
 
 global_summary <- function(P, W, E, scope, aggregation) {
   data.frame(
@@ -56,8 +55,7 @@ global_summary <- function(P, W, E, scope, aggregation) {
 }
 
 ## Common pixel mask: only count pixels with defined damage in all three scenarios.
-## Ensures a fixed denominator so unweighted and area-weighted % match each other
-## and match the (sum-based) percentages.
+## Ensures a fixed denominator across scenarios.
 valid <- !is.na(values(dam_anc_pre)) & !is.na(values(dam_anc_fut)) & !is.na(values(dam_best_fut))
 n_valid    <- sum(valid)
 A_vals     <- values(A)
@@ -79,11 +77,12 @@ global_tab <- rbind(
 )
 
 #### Cowpea producers (accession-weighted) ----
-## Mean damage over the unique post-dedup accession-pixels used in Fig 6C:
+## Mean damage over the unique accession locations used in Fig 6C:
 ## producer countries + India retained at n_accessions >= 2 (i.e., the same
 ## countries that appear in the country_damage CSV with a non-NA country name).
-## Each unique sampling location contributes once -- the "fair geographic
-## weight" convention as in Fig 6C country means, just aggregated globally.
+## producer countries + India retained at n_accessions >= 2 (i.e., the same
+## countries that appear in the country_damage CSV with a non-NA country name).
+## Each unique sampling location contributes once, as in the Fig 6C country means.
 
 cd  <- read.csv("../output/cowpea_country_damage.csv")
 acc <- read.csv("../output/cowpea_accession_damage.csv")
@@ -230,12 +229,12 @@ cat("- Decomposition splits (future - present) into gradual / local extinction /
 cat("- Flip effect: grid cells where warming alone decreases damage but evolution lifts it above present\n")
 sink()
 
-#### Console echo ----
-
-## Machine-readable copies for the Excel-table pipeline
+## CSV copies
 write.csv(summary_tab, "../output/global_sums_aggregate.csv",     row.names = FALSE)
 write.csv(decomp_tab,  "../output/global_sums_decomposition.csv", row.names = FALSE)
 write.csv(flip_tab,    "../output/global_sums_flip.csv",          row.names = FALSE)
+
+#### Console echo ----
 
 cat("\n== AGGREGATE ==\n")
 print(summary_tab, row.names = FALSE, digits = 3)
