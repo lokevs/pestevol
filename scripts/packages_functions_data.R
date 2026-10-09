@@ -171,7 +171,7 @@ invlogit <- function(x)(1/(1+exp(-x)))
 
 #### Thermal performance curve functions ----
 
-## Lactin-Ratkowsky-Fang (LRF) development/growth rate function
+## Lobry–Rosso–Flandrois (LRF) development/growth rate function
 LRF <- function(temp, Tmin, Tmax, Topt, Ropt){
   ifelse(temp > Tmax | temp < Tmin, 0, Ropt * ((temp + 273.15) - (Tmax + 273.15)) * ((temp + 273.15) - (Tmin + 273.15)) ^ 2 / (((Topt + 273.15) - (Tmin + 273.15)) * (((Topt + 273.15) - (Tmin + 273.15)) * ((temp + 273.15) - (Topt + 273.15)) - ((Topt + 273.15) - (Tmax + 273.15)) * ((Topt + 273.15) + (Tmin + 273.15) - 2 *(temp + 273.15)))))
 }
