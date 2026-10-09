@@ -234,7 +234,6 @@ for(years in c(2, 77)){
             simulated_fitness$starting.mass <- start_mass[1:365]
 
             ## Daily loop for mortality-specific metrics
-            ## Daily loop for mortality-specific metrics
             for(i in 1:365) {
               if (simulated_fitness$starting.mass[i] <= 0) next
               
