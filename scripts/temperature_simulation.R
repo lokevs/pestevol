@@ -1,7 +1,7 @@
 #### Load packages, functions, and data ----
 source("packages_functions_data.R")
 library(maps)
-library(mapdata)  # provides the "worldHires" database used by the validation map below
+library(mapdata)  # provides the "worldHires" database used by the weather station map
 
 #### Read and prepare data ----
 
@@ -92,10 +92,10 @@ axis(side = 4, at = c(5, 25, 45), las  = 2)
 
 #### Validate simulations against observed data ----
 
-## Simulate 5 years without warming. Cached to ../output/validation_time_series.txt so
-## naive users never run this simulation (the file is provided on Zenodo and fetched by
-## fetch_data.R). Preserve the 78-year series in main_time_series and restore it after the
-## validation plots, so downstream scripts still receive the full series.
+## Simulate 5 years without warming. The result is cached in
+## ../output/validation_time_series.txt (provided on Zenodo and fetched by fetch_data.R),
+## so the simulation only runs if that file is missing. The 78-year series is kept in
+## main_time_series and restored after the validation plots.
 main_time_series <- simulated_time_series
 if (!file.exists("../output/validation_time_series.txt")) {
   set.seed(599); simulated_time_series <- simulate_temperature(input_temperature = dat$temp, input_date_time = dat$date.time, input_site = dat$site, years = 5, n = 20, start_day = 182, end_day = 181)
@@ -186,6 +186,7 @@ pdf("../figures/raw/fig_S11_simu_vs_real_temp_acf_time_series.pdf", height = 1.5
 }; dev.off()
 
 #### Restore the full 78-year series for downstream scripts ----
-## The validation block above temporarily reassigned simulated_time_series; downstream
-## scripts (results_20_sites*.R) need the 78-year series, so put it back.
+
+## The validation block above reuses the name simulated_time_series; downstream
+## scripts (results_20_sites*.R) need the 78-year series.
 simulated_time_series <- main_time_series
