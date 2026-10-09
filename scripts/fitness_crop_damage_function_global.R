@@ -3,7 +3,7 @@
 # The inverse logit function 
 invlogit <- function(x) (1 / (1 + exp(-x)))
 
-# Fecundity ~ body size scaling functions (Retained from original script)
+# Fecundity ~ body size scaling functions
 fecmax_scaling_anc <- function(x) {3.35942108123634 + 0.357248526159367 * log(x)}
 fecmax_scaling_cold <- function(x) {3.34826094488102 + 0.357248526159367 * log(x)}
 fecmax_scaling_hot <- function(x) {3.2352203671293 + 0.357248526159367 * log(x)}
@@ -223,7 +223,7 @@ calculate_fitness_crop_damage <- function(temperatures, plot = FALSE, lifespan_a
   summary_list <- lapply(names(full_results_list), function(name) {
     res <- full_results_list[[name]]
     
-    # --- STRICT GEOMETRIC MEAN ---
+    # Geometric mean lambda
     # If any lambda is 0, log(0) is -Inf, mean is -Inf, and exp(-Inf) is 0.
     # This naturally returns 0 if any cohort fails completely.
     geo_mean_lambda <- exp(mean(log(res$lambda), na.rm = TRUE))
@@ -335,7 +335,7 @@ run_simulation <- function(temperatures, dev_rate, growth_rate, viability_rate, 
   
   # Final fitness loop
   max_life_by_survival <- ceiling(log(0.01) / log(survival_rate_adult))
-  simulated_offspring <- numeric(365) # This is effectively R0
+  simulated_offspring <- numeric(365) # R0 (net reproductive rate)
   simulated_crop_damage_rate <- numeric(365)
   simulated_lambda <- numeric(365)
   
