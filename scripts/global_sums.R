@@ -80,8 +80,6 @@ global_tab <- rbind(
 ## Mean damage over the unique accession locations used in Fig 6C:
 ## producer countries + India retained at n_accessions >= 2 (i.e., the same
 ## countries that appear in the country_damage CSV with a non-NA country name).
-## producer countries + India retained at n_accessions >= 2 (i.e., the same
-## countries that appear in the country_damage CSV with a non-NA country name).
 ## Each unique sampling location contributes once, as in the Fig 6C country means.
 
 cd  <- read.csv("../output/cowpea_country_damage.csv")
